@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateActivity"
+    android:weightSum="2"
+    android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_marginTop="40dp"
+            android:id="@+id/anh_chon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:layout_editor_absoluteX="46dp"
+            tools:layout_editor_absoluteY="83dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/elon_musk"/>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/bt_chupHinh"
+                android:layout_width="150dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center"
+                android:text="@string/chonH"
+                android:layout_marginEnd="20dp"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+
+                android:id="@+id/button"
+                android:layout_width="150dp"
+                android:layout_height="63dp"
+                android:layout_gravity="center"
+                android:text="@string/chupH"
+                style="?android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
+
+
+        <EditText
+            android:hint="@string/name"
+            android:id="@+id/bt_sua"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:inputType="text" />
+        <EditText
+            android:hint="@string/sd"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:autofillHints=""
+            android:inputType="phone" />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/bt_luu"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:text="@string/luu"
+            android:layout_marginEnd="20dp"/>
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/bt_thoat"
+            android:layout_width="150dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:text="@string/thoat" />
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+

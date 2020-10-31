@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SQLite_QLNhanVien</string>
+    <string name="id">ID</string>
+    <string name="ten">Ten</string>
+    <string name="sdt">SDT</string>
+    <string name="xoa">Xóa</string>
+    <string name="sua">Sửa</string>
+    <string name="button">Button</string>
+    <string name="todo">TODO</string>
+    <string name="chonH">Chụp hình</string>
+    <string name="chupH">chọn hình</string>
+    <string name="thoat">Thoát</string>
+    <string name="name">Name</string>
+    <string name="sd">SĐT</string>
+    <string name="luu">Lưu</string>
+</resources>
