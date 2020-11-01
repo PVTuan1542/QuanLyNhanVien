@@ -1,8 +1,12 @@
 package sqlite_qlnhanvien.com;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -63,10 +67,51 @@ public class AdapterNhanVien extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(context,UpdateActivity.class);
+                intent.putExtra("ID",nhanVien.id);
                 context.startActivity(intent);
             }
         });
 
+        bt_xoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setIcon(android.R.drawable.ic_delete);
+                builder.setTitle("Ban có muốn xóa không ?");
+                builder.setMessage("Bạn có chắc chắn muốn xóa nhân viên này không");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        delete(nhanVien.id);
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         return row;
+    }
+
+    private void delete(int idNhanVien) {
+        SQLiteDatabase database = Database.initDatabase(context,"QL.sqlite");
+        database.delete("QLNhanVien","ID = ?",new String[]{idNhanVien + ""});
+        list.clear();
+        Cursor cursor = database.rawQuery("Select * from QLNhanVien",null);
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            String ten = cursor.getString(1);
+            String sdt = cursor.getString(2);
+            byte[] anh = cursor.getBlob(3);
+
+            list.add(new NhanVien(id,ten,sdt,anh ));
+        }
+        notifyDataSetChanged();
     }
 }

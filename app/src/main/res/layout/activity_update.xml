@@ -10,8 +10,9 @@
 
 
         <ImageView
+
             android:layout_marginTop="40dp"
-            android:id="@+id/anh_chon"
+            android:id="@+id/anhDaiDien"
             android:layout_width="150dp"
             android:layout_height="150dp"
             tools:layout_editor_absoluteX="46dp"
@@ -37,7 +38,7 @@
 
             <Button
 
-                android:id="@+id/button"
+                android:id="@+id/bt_chonHinh"
                 android:layout_width="150dp"
                 android:layout_height="63dp"
                 android:layout_gravity="center"
@@ -48,13 +49,14 @@
 
         <EditText
             android:hint="@string/name"
-            android:id="@+id/bt_sua"
+            android:id="@+id/et_name"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:autofillHints=""
             android:inputType="text" />
         <EditText
+            android:id="@+id/et_sdt"
             android:hint="@string/sd"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"

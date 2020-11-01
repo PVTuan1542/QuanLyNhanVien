@@ -2,9 +2,12 @@ package sqlite_qlnhanvien.com;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     final String DATABASE_NAME = "QL.sqlite";
     SQLiteDatabase database ;
 
+    Button bt_them;
     ListView listView;
     ArrayList<NhanVien> list;
     AdapterNhanVien adapter;
@@ -32,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void addControls() {
+        bt_them = findViewById(R.id.bt_them);
+        bt_them.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,addActivity.class);
+                startActivity(intent);
+            }
+        });
+
         listView = findViewById(R.id.listView);
         list= new ArrayList<>();
         adapter = new AdapterNhanVien(this,list);

@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+   <Button
+       android:id="@+id/bt_them"
+       android:layout_width="200dp"
+       android:layout_height="50dp"
+       android:text="@string/them"
+       android:layout_margin="10dp"
+       android:backgroundTint="#2196F3"
+       android:textColor="#000000"/>
    <ListView
+       android:layout_below="@+id/bt_them"
        android:layout_width="match_parent"
        android:id="@+id/listView"
        android:layout_height="match_parent"/>

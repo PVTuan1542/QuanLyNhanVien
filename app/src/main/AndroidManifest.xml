@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SQLite_QLNhanVien">
-        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".addActivity"></activity>
+        <activity android:name=".UpdateActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

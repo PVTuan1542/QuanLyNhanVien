@@ -1,11 +1,9 @@
 package sqlite_qlnhanvien.com;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,13 +20,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class UpdateActivity extends AppCompatActivity {
+public class addActivity extends AppCompatActivity {
 
 
     final String DATABASE_NAME = "QL.sqlite";
     final int RESQUEST_TAKE_PHOTO = 123 ;
     final int RESQUEST_CHOOSE_PHOTO = 321;
-    int id=-1;
 
     Button bt_chonHinh,bt_chupHinh,bt_luu,bt_thoat ;
     EditText et_sdt,et_name;
@@ -37,26 +34,10 @@ public class UpdateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_add);
+
         addControls();
         addEvents();
-        initUI();
-    }
-
-    private void initUI() {
-        Intent intent = getIntent();
-        id = intent.getIntExtra("ID",-1);
-        SQLiteDatabase database = Database.initDatabase(this,DATABASE_NAME);
-        Cursor cursor = database.rawQuery("Select * from QLNhanVien where ID = ?",new String[]{id + "",});
-        cursor.moveToFirst();
-        String ten = cursor.getString(1);
-        String sdt = cursor.getString(2);
-        byte[] img = cursor.getBlob(3);
-
-        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0,img.length);
-        anhDaiDien.setImageBitmap(bitmap);
-        et_name.setText(ten);
-        et_sdt.setText(sdt);
     }
 
     private void addControls() {
@@ -88,7 +69,7 @@ public class UpdateActivity extends AppCompatActivity {
         bt_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    update();
+                insert();
             }
         });
 
@@ -133,7 +114,7 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    private void update(){
+    private void insert(){
         String ten = et_name.getText().toString();
         String sdt = et_sdt.getText().toString();
 
@@ -145,7 +126,8 @@ public class UpdateActivity extends AppCompatActivity {
         contentValues.put("Anh",anh);
 
         SQLiteDatabase database = Database.initDatabase(this,"QL.sqlite");
-        database.update("QLNhanVien",contentValues,"ID = ?",new String[] {id +""});
+        database.insert("QLNhanVien",null,contentValues);
+
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
 
